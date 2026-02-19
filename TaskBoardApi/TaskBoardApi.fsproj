@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Models/TaskItem.fs" />
+    <Compile Include="Models/FilterOptions.fs" />
+    <Compile Include="Storage/InMemoryTaskStore.fs" />
+    <Compile Include="Services/JsonPersistenceService.fs" />
+    <Compile Include="Services/TaskService.fs" />
+    <Compile Include="Controllers/TaskController.fs" />
+    <Compile Include="Controllers/TagController.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+</Project>
