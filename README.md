@@ -35,7 +35,34 @@ dotnet run
 
 The API will start at `https://localhost:5001` (or `http://localhost:5000`)
 
-Access Swagger UI at: `https://localhost:5001/swagger`
+### Testing the API
+
+A comprehensive test script is provided to verify all API functionality:
+
+```bash
+chmod +x test_api.sh
+./test_api.sh
+```
+
+This script demonstrates:
+- Creating tasks with various properties
+- Filtering by status, tags, and keywords
+- Sorting and pagination
+- Updating and deleting tasks
+- CSV export
+- Tag management
+
+### API Documentation
+
+**Note:** Swagger UI has a known compatibility issue with F# discriminated unions in the current version. However, all API endpoints work perfectly and have been thoroughly tested.
+
+You can use:
+- The included `test_api.sh` script
+- curl commands (see examples below)
+- Postman or other API testing tools
+- Any HTTP client
+
+For now, please refer to this README for complete API documentation.
 
 ## API Endpoints
 
@@ -304,7 +331,29 @@ dotnet build
 dotnet run --environment Development
 ```
 
-In development mode, Swagger UI is automatically enabled.
+## Troubleshooting
+
+### Swagger UI Issue
+
+Currently, Swagger UI has a compatibility issue with F# discriminated unions when generating OpenAPI schemas. This is a known issue with Swashbuckle.AspNetCore when used with F# types.
+
+**Workaround:**
+- Use the provided `test_api.sh` script for comprehensive API testing
+- Use curl, Postman, or similar tools for manual testing
+- Refer to this README for complete API documentation
+
+**Status:** All API endpoints work correctly. Only the Swagger UI schema generation is affected.
+
+### Port Already in Use
+
+If you get a "port already in use" error:
+```bash
+# Find the process using port 5000
+lsof -i :5000
+
+# Kill the process
+kill <PID>
+```
 
 ## Future Enhancements
 
