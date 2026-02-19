@@ -82,5 +82,5 @@ type TaskController(taskService: TaskService, logger: ILogger<TaskController>) =
     member this.ExportToCsv() =
         logger.LogInformation("Exporting tasks to CSV")
         let csv = taskService.ExportToCsv()
-        let bytes = Encoding.UTF8.GetBytes(csv)
+        let bytes = (new UTF8Encoding(false)).GetBytes(csv)
         this.File(bytes, "text/csv", "tasks.csv") :> IActionResult
